@@ -1,0 +1,18 @@
+# Virtual Environment
+.venv/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Uploaded Files
+uploads/
+
+# Environment Variables
+.env
+
+# VS Code Settings
+.vscode/
+
+# macOS
+.DS_Store

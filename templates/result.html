@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Result</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h1 class="text-center text-primary mb-4">
+        🤖 AI Resume Analyzer
+    </h1>
+
+    <!-- ATS Score -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header bg-primary text-white text-center">
+
+            <h2>ATS Score</h2>
+
+        </div>
+
+        <div class="card-body">
+
+            <h1 class="text-center mb-4">
+
+                {{ ats_score }}%
+
+            </h1>
+
+            <div class="progress" style="height:30px;">
+
+                <div
+                    class="progress-bar {{ progress_color }}"
+                    role="progressbar"
+                    style="width: {{ ats_score }}%;"
+                    aria-valuenow="{{ ats_score }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100">
+
+                    {{ ats_score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Matched Keywords -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header bg-success text-white">
+
+            ✅ Matched Keywords
+
+        </div>
+
+        <div class="card-body">
+
+            <ul>
+
+                {% for word in matched_words %}
+                    <li>{{ word }}</li>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Missing Keywords -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header bg-danger text-white">
+
+            ❌ Missing Keywords
+
+        </div>
+
+        <div class="card-body">
+
+            <ul>
+
+                {% for word in missing_words %}
+                    <li>{{ word }}</li>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Suggestions -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header bg-warning">
+
+            💡 Resume Suggestions
+
+        </div>
+
+        <div class="card-body">
+
+            <ul>
+
+                {% for suggestion in suggestions %}
+                    <li>{{ suggestion }}</li>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Resume Text -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header bg-info text-white">
+
+            📄 Resume Text
+
+        </div>
+
+        <div class="card-body">
+
+            <pre style="white-space: pre-wrap;">{{ resume_text }}</pre>
+
+        </div>
+
+    </div>
+
+    <!-- Job Description -->
+    <div class="card shadow mb-5">
+
+        <div class="card-header bg-secondary text-white">
+
+            📝 Job Description
+
+        </div>
+
+        <div class="card-body">
+
+            <pre style="white-space: pre-wrap;">{{ job_description }}</pre>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
